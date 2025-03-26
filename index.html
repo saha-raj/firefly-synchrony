@@ -25,7 +25,7 @@
             </div>
             
             <p>
-                some text here
+                some text here. some text here. some text here. some text here. some text here
             </p>
             
             
@@ -37,6 +37,7 @@
                 <source src="images/ff_3d_01.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+
             <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
                 behaviors.</p>
         </div>
@@ -73,58 +74,37 @@
 
     </div>
 
-    <div class="section-divider"></div>
+    
+    <div class="section-divider"></div> 
 
-    <div class="more-stories">
-        <div class="content">
-            <h3>More Visual Stories</h3>
-        <div class="stories-grid">
-            <div class="story-card">
-                <a href="https://saha-raj.github.io/tipping-points-climate/" class="story-card-link">
-                    <img src="images/stories/tipping-pts-earth-sim.gif" alt="Story 1">
-                    <div class="story-card-content">
-                        <h4>Tipping Points in Climate</h4>
-                        <p>A simple model to demonstrate tipping points in climate ...</p>
-                    </div>
-                </a>
-            </div>
-            <div class="story-card">
-                <a href="https://saha-raj.github.io/great-salt-lake/" class="story-card-link">
-                    <img src="images/stories/great_salt_lake.gif" alt="Story 2">
-                    <div class="story-card-content">
-                        <h4>The Changing Great Salt Lake</h4>
-                        <p>How the Great Salt Lake has been shrinking ...</p>
-                    </div>
-                </a>
-            </div>
-            <div class="story-card">
-                <a href="https://saha-raj.github.io/mangroves/" class="story-card-link">
-                    <img src="images/stories/mangroves.gif" alt="Story 3">
-                    <div class="story-card-content">
-                        <h4>How Mangroves Slow Coastal Erosion</h4>
-                        <p>Mangroves slow coastal erosion by stabilizing the shoreline...</p>
-                    </div>
-                </a>
-            </div>
+    <div id="more-stories-container"></div>
+
+    <script src="assets/js/stories-carousel.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('more-stories.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('more-stories-container').innerHTML = html;
+                    // Initialize the carousel after the content is loaded
+                    if (typeof initStoryCarousel === 'function') {
+                        setTimeout(initStoryCarousel, 100);
+                    }
+                })
+                .catch(error => console.error('Error loading more-stories section:', error));
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Raj Saha</p>
+            <p><a href="https://github.com/saha-raj/" target="_blank">Github</a> / <a
+                    href="https://www.linkedin.com/in/rajsahaphd/" target="_blank">LinkedIn</a></p>
         </div>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p>© 2024 Raj Saha</p>
-        <p><a href="https://github.com/saha-raj/" target="_blank">Github</a> / <a
-                href="https://www.linkedin.com/in/rajsahaphd/" target="_blank">LinkedIn</a></p>
-    </div>
-</footer>
+    </footer>
 
     <!-- Load D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     
-    <!-- Load our JavaScript modules -->
-    <script src="js/agent.js"></script>
-    <script src="js/simulation.js"></script>
-    <script src="js/visualization.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html> 
