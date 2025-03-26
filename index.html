@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinion Dynamics Simulation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Main fonts used in the template -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body>
+    <div class="content">
+        <div class="text-block">
+            <h1>Using Computer Vision and Math Models to Capture Synchrony in Fireflies</h1>
+            <div class="author">
+                <p>By Raj Saha, PhD</p>
+            </div>
+            
+            <p>
+                some text here
+            </p>
+            
+            
+        </div>
+
+        <!-- Image or video container -->
+        <div class="media-container">
+            <video controls class="full-width-image">
+                <source src="images/ff_3d_01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
+                behaviors.</p>
+        </div>
+
+        <div class="text-block">
+            <h2>some header</h2>
+            
+            <p>This simulation, like all models, makes several simplifying assumptions to help us understand complex social dynamics:</p>
+            
+            
+            
+            <p>These assumptions create an idealized model that captures key aspects of opinion dynamics while remaining tractable. Real-world social systems are vastly more complex, with individuals following different influence rules, having varying susceptibilities, and interacting through multiple channels beyond direct connections.</p>
+            
+            <p>The model isn't meant to predict specific real-world outcomes, but rather to help us understand and visualize the mechanisms that might drive polarization and consensus formation in social networks.</p>
+            
+        </div>
+
+        <div class="media-container">
+            <img src="images/combo_0131.png" alt="Fireflies synchronizing their flashes" class="full-width-image">
+            <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
+                behaviors.</p>
+        </div>
+
+        <div class="text-block">
+            <div class="citation">
+                <p>
+                    <strong>Reference:</strong> Damon Centola, Joshua Becker, Devon Brackbill, and Andrea Baronchelli.
+                    "Experimental evidence for tipping points in social convention."
+                    <em>Science</em>, 360(6393), 1116-1119 (2018).
+                    DOI: <a href="https://doi.org/10.1126/science.aas8827" target="_blank">10.1126/science.aas8827</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="more-stories">
+        <div class="content">
+            <h3>More Visual Stories</h3>
+        <div class="stories-grid">
+            <div class="story-card">
+                <a href="https://saha-raj.github.io/tipping-points-climate/" class="story-card-link">
+                    <img src="images/stories/tipping-pts-earth-sim.gif" alt="Story 1">
+                    <div class="story-card-content">
+                        <h4>Tipping Points in Climate</h4>
+                        <p>A simple model to demonstrate tipping points in climate ...</p>
+                    </div>
+                </a>
+            </div>
+            <div class="story-card">
+                <a href="https://saha-raj.github.io/great-salt-lake/" class="story-card-link">
+                    <img src="images/stories/great_salt_lake.gif" alt="Story 2">
+                    <div class="story-card-content">
+                        <h4>The Changing Great Salt Lake</h4>
+                        <p>How the Great Salt Lake has been shrinking ...</p>
+                    </div>
+                </a>
+            </div>
+            <div class="story-card">
+                <a href="https://saha-raj.github.io/mangroves/" class="story-card-link">
+                    <img src="images/stories/mangroves.gif" alt="Story 3">
+                    <div class="story-card-content">
+                        <h4>How Mangroves Slow Coastal Erosion</h4>
+                        <p>Mangroves slow coastal erosion by stabilizing the shoreline...</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2024 Raj Saha</p>
+        <p><a href="https://github.com/saha-raj/" target="_blank">Github</a> / <a
+                href="https://www.linkedin.com/in/rajsahaphd/" target="_blank">LinkedIn</a></p>
+    </div>
+</footer>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Load our JavaScript modules -->
+    <script src="js/agent.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
