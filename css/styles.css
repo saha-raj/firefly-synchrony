@@ -1048,8 +1048,7 @@ a.story-card:focus {
   width: 100%;
   padding-top: 107.5%;
   /* 1/0.93 ≈ 107.5% to create 0.93:1 ratio */
-  overflow: hidden;
-  /* Keep media content contained */
+  overflow: hidden; /* Explicitly hide overflow */
   background-color: #fff;
   border-top-left-radius: 8px !important;
   border-top-right-radius: 8px !important;
@@ -1382,4 +1381,36 @@ video {
 .media-container video.full-width-image::-webkit-media-controls {
     display: flex !important;
     visibility: visible !important;
+}
+
+/* Firefly Visualization Specific Styles */
+.firefly-visualization-container {
+    position: relative; /* Needed for absolute positioning of SVG */
+    /* Inherits width/max-width from .media-container */
+}
+
+#firefly-svg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: auto; 
+    /* ViewBox and preserveAspectRatio set by JS */
+    /* Add background for debugging if needed */
+    /* background-color: rgba(255, 0, 0, 0.1); */ 
+}
+
+.firefly-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.15); /* Subtle white tracks */
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: stroke; /* Allow hover only on the line itself */
+    transition: stroke 0.1s ease-in-out, stroke-width 0.1s ease-in-out; /* Smooth transition */
+}
+
+.firefly-track.highlighted {
+    stroke: #ffff00; /* Bright yellow highlight */
+    stroke-width: 2.5;
+    stroke-opacity: 1.0;
 }

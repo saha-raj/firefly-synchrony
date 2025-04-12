@@ -30,6 +30,16 @@
             
         </div>
 
+        <!-- Firefly Visualization Container -->
+        <div class="media-container firefly-visualization-container">
+            <!-- Background Image -->
+            <img id="firefly-background" src="assets/images/maximum_intensity_projection.png"
+                alt="Maximum Intensity Projection of Firefly Flashes" class="full-width-image">
+            <!-- SVG Overlay for Tracks -->
+            <svg id="firefly-svg-overlay"></svg>
+            <p class="caption">Hover over the image to highlight individual firefly paths.</p>
+        </div>
+
         <!-- Image or video container -->
         <div class="media-container">
             <video controls class="full-width-image">
@@ -71,6 +81,8 @@
             </div>
         </div>
 
+
+
     </div>
 
     
@@ -104,6 +116,8 @@
 
     <!-- Load D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Load Firefly Visualization Script -->
+    <script src="js/firefly-visualization.js"></script>
     
 </body>
 </html> 
