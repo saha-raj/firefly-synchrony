@@ -12,13 +12,29 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- KaTeX CSS (Integrity check usually less critical for CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+
+    <!-- KaTeX JS -->
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <!-- REMOVED integrity attribute for troubleshooting -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+
+    <!-- KaTeX Auto-render extension -->
+    <!-- This finds and renders LaTeX automatically -->
+    <!-- REMOVED integrity attribute for troubleshooting -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
 </head>
 <body>
     <div class="content">
         <div class="text-block">
-            <h1>Using Computer Vision and Math Models to Capture Synchrony in Fireflies</h1>
+            <h1>Simulating Synchrony in Fireflies</h1>
             <div class="author">
                 <p>By Raj Saha, PhD</p>
             </div>
@@ -28,6 +44,23 @@
             </p>
             
             
+        </div>
+
+        <div class="media-container">
+            <video controls autoplay muted class="full-width-image">
+                <source src="images/ff_3d_01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        
+            <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
+                behaviors.</p>
+        </div>
+
+        <div class="text-block">
+            <h2>some header</h2>
+        
+            <p>text</p>
+        
         </div>
 
         <!-- Firefly Visualization Container -->
@@ -40,35 +73,28 @@
             <p class="caption">Hover over the image to highlight individual firefly paths.</p>
         </div>
 
-        <!-- Image or video container -->
-        <div class="media-container">
-            <video controls class="full-width-image">
-                <source src="images/ff_3d_01.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
-                behaviors.</p>
+        <div class="text-block">
+            <h2>Mathematical Model</h2>
+            <p>
+                We can model the interaction between two oscillators \(i\) and \(j\) using the Kuramoto model.
+                The phase \( \theta_i \) of oscillator \(i\) evolves according to the differential equation:
+            </p>
+            \[
+            \frac{d\theta_i}{dt} = \omega_i + \frac{K}{N} \sum_{j=1}^{N} \sin(\theta_j - \theta_i)
+            \]
+            <p>
+                Here, \( \omega_i \) is the natural frequency of oscillator \(i\), \( K \) is the coupling strength,
+                and the sum is over all \( N \) oscillators. This equation shows how each firefly adjusts its phase based on the phase differences with others.
+            </p>
         </div>
 
         <div class="text-block">
             <h2>some header</h2>
-            
-            <p>This simulation, like all models, makes several simplifying assumptions to help us understand complex social dynamics:</p>
-            
-            
-            
-            <p>These assumptions create an idealized model that captures key aspects of opinion dynamics while remaining tractable. Real-world social systems are vastly more complex, with individuals following different influence rules, having varying susceptibilities, and interacting through multiple channels beyond direct connections.</p>
-            
-            <p>The model isn't meant to predict specific real-world outcomes, but rather to help us understand and visualize the mechanisms that might drive polarization and consensus formation in social networks.</p>
-            
+        
+            <p>text</p>
+        
         </div>
 
-        <div class="media-container">
-            <img src="images/combo_0131.png" alt="Fireflies synchronizing their flashes" class="full-width-image">
-            <p class="caption">Fireflies synchronizing their flashes in a forest. The patterns emerge from simple individual
-                behaviors.</p>
-        </div>
 
         <div class="text-block">
             <div class="citation">
@@ -118,6 +144,6 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- Load Firefly Visualization Script -->
     <script src="js/firefly-visualization.js"></script>
-    
+
 </body>
 </html> 

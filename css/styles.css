@@ -58,13 +58,16 @@
 
 body {
   background-color: var(--background-color);
-  font-family: var(--ui-font);
+  font-family: sans-serif;
+  display: flex; /* Keep flex for column layout */
+  flex-direction: column;
+  padding: 20px; /* This padding might need adjustment later */
   font-size: var(--base-font-size);
   line-height: 1.5;
   overflow-x: hidden;
   min-height: 120vh;
   margin: 0;
-  padding: 0;
+  padding: 0; /* Remove body padding */
   color: var(--text-color);
 }
 
@@ -138,7 +141,8 @@ li {
 /* Content */
 .content {
   max-width: var(--content-width);
-  margin: 0 auto;
+  width: 100%; /* Ensure it takes up available width up to max-width */
+  margin: 0 auto; /* Center the content block */
   padding: var(--content-padding);
   background-color: var(--content-bg);
   position: relative;
@@ -745,26 +749,42 @@ select option::before {
 
 /* Footer */
 .footer {
+  /* Keep this to ensure it spans the viewport */
+  width: 100%;
+  /* Restore original styling from reference */
   min-height: 20vh;
   background-color: var(--footer-bg);
-  margin-top: 3rem;
-  padding: 2rem 0;
+  margin-top: 4rem; /* Use margin from reference */
+  padding: 2rem 0; /* Use padding from reference */
+  /* Remove border and text-align */
+  /* border-top: 1px solid var(--border-color); */
+  /* text-align: center; */
 }
 
 .footer .container {
+  /* Keep these for alignment with main content */
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Use padding from reference */
+  /* Restore text color */
   color: var(--footer-text);
+  /* Remove flex properties to revert to default block layout */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
 
+/* Add specific styles for footer paragraphs from reference */
 .footer p {
   margin-bottom: 1rem;
   color: var(--footer-text);
-  font-family: var(--ui-font);
-  font-size: 0.9rem;
+  font-family: var(--ui-font); /* Assuming --ui-font is desired */
+  font-size: 1rem;
+  /* Ensure text aligns left within the container */
+  text-align: left;
 }
 
+/* Add specific styles for footer links from reference */
 .footer a {
   color: var(--footer-text);
   text-decoration: none;
@@ -911,15 +931,18 @@ button:disabled {
 }
 
 .caption {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 1rem;
-    text-align: center;
-    font-style: italic;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-} 
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 1rem;
+  text-align: left;
+  /* font-style: italic; */
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
 
 /* More Stories Section */
 .more-stories {
@@ -1183,6 +1206,7 @@ a.story-card:focus {
   left: 0;
 }
 
+
 .carousel-nav.next {
   right: 0;
 }
@@ -1413,4 +1437,144 @@ video {
     stroke: #ffff00; /* Bright yellow highlight */
     stroke-width: 2.5;
     stroke-opacity: 1.0;
+    cursor: pointer; /* Add pointer cursor when hovering highlighted track */
+}
+
+/* Intensity Chart Pop-up Styles */
+.intensity-chart-popup {
+    position: absolute; /* Positioned by JS relative to the page */
+    /* REMOVE fixed width/height - JS will set these */
+    /* width: 160px; */
+    /* height: 160px; */
+    background-color: rgba(40, 40, 40, 0.85); /* Semi-transparent dark background */
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100; /* Ensure it's above the SVG overlay */
+    pointer-events: none; /* Initially ignore mouse events */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.2s ease-in-out;
+    padding: 5px; /* Small padding around the SVG */
+    box-sizing: border-box;
+    overflow: hidden; /* Hide anything slightly overflowing */
+}
+
+.intensity-chart-popup.visible {
+    opacity: 1;
+    pointer-events: auto; /* Allow interaction when visible (though maybe not needed) */
+}
+
+/* Styles for the D3 chart elements inside the popup */
+.intensity-chart-popup svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Improve rendering quality */
+    shape-rendering: geometricPrecision; 
+    text-rendering: optimizeLegibility;
+}
+
+.intensity-chart-popup .axis path,
+.intensity-chart-popup .axis line {
+    fill: none;
+    stroke: #ccc; /* Light gray axis lines */
+    shape-rendering: crispEdges; /* Keep axes sharp */
+    stroke-width: 1px;
+}
+
+.intensity-chart-popup .axis text {
+    font-family: var(--ui-font), sans-serif;
+    font-size: 10px; /* Slightly larger tick labels */
+    fill: #eee; /* Light text color */
+    /* Add font smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.intensity-chart-popup .intensity-line {
+    fill: none;
+    stroke: #ffffff; /* White line for intensity */
+    stroke-width: 1.5px;
+    shape-rendering: geometricPrecision; /* Smoother line */
+}
+
+.intensity-chart-popup .chart-title {
+    font-family: var(--ui-font), sans-serif;
+    font-size: 12px; /* Slightly larger title */
+    fill: #eee;
+    text-anchor: middle;
+    /* Add font smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Style for the new X-axis label */
+.intensity-chart-popup .axis-label {
+    fill: #ccc;
+    font-size: 11px; /* Slightly larger axis label */
+    font-family: var(--ui-font), sans-serif;
+    text-anchor: middle;
+    /* Add font smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#image-container {
+    position: relative; /* Crucial for absolute positioning of children */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center container */
+    line-height: 0; /* Prevent extra space below base image affecting height */
+}
+
+/* Base image dictates the container size */
+#image-container #base-image {
+    display: block; /* Remove bottom space */
+    width: 100%; /* Use full container width */
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Overlay MUST match the base image exactly */
+#overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Match container width */
+    height: 100%; /* Match container height */
+    pointer-events: none;
+    display: block; /* Initially visible */
+}
+
+/* Class to hide the overlay */
+#overlay-image.hidden {
+    display: none;
+}
+
+/* Styling for the toggle text - positioned relative to #image-container */
+.track-toggle-text {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #efefef;
+    padding: 6px 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+/* Optional: Slightly change background on hover */
+.track-toggle-text:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Optional: Add some spacing to the specific container */
+.animation-viewer-container {
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
